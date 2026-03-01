@@ -4,6 +4,10 @@
 # ==================== ADD NEW SKILLS HERE ====================
 $repos = @(
     @{
+        name = "skill-dev-driver"
+        url  = "https://github.com/wanddream/skill-dev-driver.git"
+    },
+    @{
         name = "skill-miniprogram-ecosystem"
         url  = "https://github.com/wanddream/skill-miniprogram-ecosystem.git"
     },

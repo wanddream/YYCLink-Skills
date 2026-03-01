@@ -8,9 +8,10 @@ YYCLink 的个人 AI Skill 集合，用于 Claude Code 等 AI 编程助手。
 
 | Skill | 说明 | 适用场景 | GitHub |
 |-------|------|----------|--------|
+| **skill-dev-driver** ⭐ | 开发驾驶元技能 - 项目上下文管理/技能调度 | 所有项目的开发驾驶 | [GitHub](https://github.com/wanddream/skill-dev-driver) |
 | skill-miniprogram-ecosystem | 小程序开发生态 | 微信/抖音/支付宝小程序开发 | [GitHub](https://github.com/wanddream/skill-miniprogram-ecosystem) |
 | skill-thesis-writer | 论文写作助手 | 学术论文写作 | [GitHub](https://github.com/wanddream/skill-thesis-writer) |
-| skill-product-manager | 产品经理拷打 | 产品方案评审/从0到1打磨 | [GitHub](https://github.com/wanddream/skill-product-manager) |
+| skill-product-manager | 产品经理拷打 | 产品方案评审/从 0 到 1 打磨 | [GitHub](https://github.com/wanddream/skill-product-manager) |
 
 ## 🚀 快速开始
 
@@ -32,6 +33,9 @@ git clone https://github.com/wanddream/skill-thesis-writer.git
 ### 方式二：手动克隆单个 Skill
 
 ```bash
+# 开发驾驶（元技能）
+git clone https://github.com/wanddream/skill-dev-driver.git
+
 # 小程序开发生态
 git clone https://github.com/wanddream/skill-miniprogram-ecosystem.git
 
@@ -57,6 +61,7 @@ YYCLink-Skills/
 ├── install.ps1            # Windows 一键下载/更新脚本
 ├── run.bat                # 双击运行入口
 ├── .gitignore             # 忽略下载的 skill-*/ 文件夹
+├── skill-dev-driver/      # 开发驾驶元技能（下载后）
 ├── skill-miniprogram-ecosystem/   # 小程序技能（下载后）
 ├── skill-thesis-writer/           # 论文技能（下载后）
 └── skill-product-manager/         # 产品经理拷打（下载后）
@@ -100,8 +105,8 @@ name: skill-xxx
 
 ## 触发词
 当用户说以下关键词时触发此技能：
-- "关键词1"
-- "关键词2"
+- "关键词 1"
+- "关键词 2"
 
 ## 指令
 当技能被触发时，AI 应该：
@@ -142,7 +147,7 @@ $repos = @(
 1. 在 "我的 Skills" 表格中添加新技能：
 
 ```markdown
-| skill-web-dev | Web开发指南 | 前端/后端开发 | [GitHub](https://github.com/username/skill-web-dev) |
+| skill-web-dev | Web 开发指南 | 前端/后端开发 | [GitHub](https://github.com/username/skill-web-dev) |
 ```
 
 2. 更新"目录结构"部分，删除 `skills.json` 的引用
@@ -151,7 +156,7 @@ $repos = @(
 
 ```bash
 git add .
-git commit -m "添加新技能: skill-web-dev"
+git commit -m "添加新技能：skill-web-dev"
 git push
 ```
 
@@ -165,13 +170,13 @@ git init
 
 # 2. 创建 SKILL.md
 cat > SKILL.md << 'EOF'
-# Skill: Web开发
+# Skill: Web 开发
 
 ## 描述
 前端和后端开发最佳实践
 
 ## 触发词
-- "web开发"
+- "web 开发"
 - "前端"
 - "后端"
 
