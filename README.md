@@ -85,7 +85,15 @@ YYCLink-Skills/
 
 ## ➕ 如何添加新 Skill
 
-### 第 1 步：创建新技能仓库
+本仓库支持两种方式添加新技能：
+
+---
+
+### 方式 A：从零创建新技能（独立仓库）
+
+适用于创建全新的技能仓库。
+
+#### 第 1 步：创建新技能仓库
 
 1. 在 GitHub 创建新仓库，命名格式：`skill-<功能名>`
    - 例如：`skill-web-dev`、`skill-python-ml`
@@ -99,7 +107,7 @@ skill-xxx/
 └── .gitignore
 ```
 
-### 第 2 步：编写 SKILL.md
+#### 第 2 步：编写 SKILL.md
 
 `SKILL.md` 是 AI 读取的核心文件，告诉 AI 如何使用这个技能。
 
@@ -108,6 +116,10 @@ skill-xxx/
 ```markdown
 ---
 name: skill-xxx
+description: 技能描述
+triggerKeywords: ["关键词 1", "关键词 2"]
+author: YourName
+version: 1.0.0
 ---
 
 # Skill: 技能名称
@@ -130,51 +142,89 @@ name: skill-xxx
 AI：xxx
 ```
 
-> 💡 **提示**：开头的 YAML Front Matter `name: skill-xxx` 是 CodeBuddy 识别技能的关键，必须与仓库名保持一致。
-
-### 第 3 步：添加到 install.ps1
-
-打开 `install.ps1`，在 `$repos = @( ... )` 数组中添加新条目：
-
-```powershell
-$repos = @(
-    @{
-        name = "skill-miniprogram-ecosystem"
-        url  = "https://github.com/wanddream/skill-miniprogram-ecosystem.git"
-    },
-    @{
-        name = "skill-thesis-writer"
-        url  = "https://github.com/wanddream/skill-thesis-writer.git"
-    },
-    # ====== 在这里添加新技能 ======
-    @{
-        name = "skill-web-dev"
-        url  = "https://github.com/username/skill-web-dev.git"
-    }
-)
-```
-
-### 第 4 步：更新 README.md
-
-1. 在 "我的 Skills" 表格中添加新技能：
-
-```markdown
-| skill-web-dev | Web 开发指南 | 前端/后端开发 | [GitHub](https://github.com/username/skill-web-dev) |
-```
-
-2. 更新"目录结构"部分，删除 `skills.json` 的引用
-
-### 第 5 步：提交并推送
+#### 第 3 步：提交到 GitHub
 
 ```bash
 git add .
-git commit -m "添加新技能：skill-web-dev"
+git commit -m "init: 创建 skill-xxx 技能"
+git push -u origin main
+```
+
+#### 第 4 步：在 YYCLink-Skills 索引仓库中注册
+
+> 切换到 `YYCLink-Skills` 仓库目录，执行以下操作：
+
+1. 克隆新技能到本地：
+```bash
+git clone https://github.com/username/skill-xxx.git
+```
+
+2. 更新 `install.ps1` - 添加下载配置
+3. 更新 `README.md` - 添加技能到表格和目录结构
+4. 更新 `skill-dev-driver/skill-index.json` - 注册技能路由
+5. 提交并推送：
+```bash
+git add .
+git commit -m "feat: 添加新技能 skill-xxx"
 git push
 ```
+
+---
+
+### 方式 B：复制现有技能文件夹后初始化
+
+适用于已将新技能文件夹复制到 `YYCLink-Skills/` 目录下的情况。
+
+#### 前置条件
+
+你已经把新技能文件夹 `skill-xxx` 复制到了 `YYCLink-Skills/` 目录下：
+
+```
+YYCLink-Skills/
+├── skill-xxx/    ← 新复制的技能文件夹
+├── skill-dev-driver/
+├── skill-blender-industrial/
+└── ...
+```
+
+#### 步骤 1：检查新技能文件夹结构
+
+确认以下文件存在：
+- ✅ `skill-xxx/SKILL.md`（核心技能文件，必须包含 `name` 字段）
+- ✅ `skill-xxx/README.md`（技能说明文档）
+- ✅ `skill-xxx/.gitignore`
+
+#### 步骤 2：告诉 AI 初始化新技能
+
+对 AI 说：**"我添加了一个新技能 skill-xxx，请帮我初始化"**
+
+AI 将自动执行以下操作：
+
+| 序号 | 操作 | 文件 | 说明 |
+|------|------|------|------|
+| 1 | 更新下载配置 | `install.ps1` | 在 `$repos` 数组中添加新技能 |
+| 2 | 更新技能表格 | `README.md` | 在"我的 Skills"表格中添加新行 |
+| 3 | 更新目录结构 | `README.md` | 在目录树中添加新技能 |
+| 4 | 更新克隆命令 | `README.md` | 在"手动克隆单个 Skill"中添加命令 |
+| 5 | 注册技能路由 | `skill-dev-driver/skill-index.json` | 在 `externalSkills` 中添加配置 |
+
+#### 步骤 3：验证和提交
+
+AI 完成初始化后，检查更改是否正确：
+
+```bash
+git status
+git add .
+git commit -m "feat: 添加新技能 skill-xxx"
+git push
+```
+
+---
 
 ### 完整示例流程
 
 ```bash
+# ====== 方式 A：从零创建 ======
 # 1. 创建新仓库
 mkdir skill-web-dev
 cd skill-web-dev
@@ -182,6 +232,14 @@ git init
 
 # 2. 创建 SKILL.md
 cat > SKILL.md << 'EOF'
+---
+name: skill-web-dev
+description: Web 开发指南
+triggerKeywords: ["web", "前端", "后端"]
+author: YYCLink
+version: 1.0.0
+---
+
 # Skill: Web 开发
 
 ## 描述
@@ -205,11 +263,22 @@ git push -u origin main
 
 # 4. 在索引仓库更新配置
 cd ../YYCLink-Skills
-# 编辑 install.ps1 在 $repos 数组中添加新技能
-# 编辑 README.md 添加表格行
-
+git clone https://github.com/username/skill-web-dev.git
+# 编辑 install.ps1、README.md、skill-index.json
 git add .
-git commit -m "添加 skill-web-dev"
+git commit -m "feat: 添加 skill-web-dev"
+git push
+
+# ====== 方式 B：复制后初始化 ======
+# 1. 复制技能文件夹到 YYCLink-Skills 目录
+cp -r ../skill-web-dev ./YYCLink-Skills/
+
+# 2. 告诉 AI 初始化
+# "我添加了一个新技能 skill-web-dev，请帮我初始化"
+
+# 3. AI 自动完成后，验证并提交
+git add .
+git commit -m "feat: 添加 skill-web-dev"
 git push
 ```
 
