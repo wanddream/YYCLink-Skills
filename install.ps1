@@ -8,6 +8,10 @@ $repos = @(
         url  = "https://github.com/wanddream/skill-dev-driver.git"
     },
     @{
+        name = "skill-blender-industrial"
+        url  = "https://github.com/wanddream/skill-blender-industrial.git"
+    },
+    @{
         name = "skill-miniprogram-ecosystem"
         url  = "https://github.com/wanddream/skill-miniprogram-ecosystem.git"
     },

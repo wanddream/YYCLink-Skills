@@ -6,9 +6,17 @@ YYCLink 的个人 AI Skill 集合，用于 Claude Code 等 AI 编程助手。
 
 ## 🎯 我的 Skills
 
+### 元技能
+
 | Skill | 说明 | 适用场景 | GitHub |
 |-------|------|----------|--------|
 | **skill-dev-driver** ⭐ | 开发驾驶元技能 - 项目上下文管理/技能调度 | 所有项目的开发驾驶 | [GitHub](https://github.com/wanddream/skill-dev-driver) |
+
+### 领域技能
+
+| Skill | 说明 | 适用场景 | GitHub |
+|-------|------|----------|--------|
+| **skill-blender-industrial** 🆕 | Blender 工业产品建模 - 通过 MCP 与 Blender 通信 | 3D 建模/工业产品设计/3D 打印 | [GitHub](https://github.com/wanddream/skill-blender-industrial) |
 | skill-miniprogram-ecosystem | 小程序开发生态 | 微信/抖音/支付宝小程序开发 | [GitHub](https://github.com/wanddream/skill-miniprogram-ecosystem) |
 | skill-thesis-writer | 论文写作助手 | 学术论文写作 | [GitHub](https://github.com/wanddream/skill-thesis-writer) |
 | skill-product-manager | 产品经理拷打 | 产品方案评审/从 0 到 1 打磨 | [GitHub](https://github.com/wanddream/skill-product-manager) |
@@ -36,6 +44,9 @@ git clone https://github.com/wanddream/skill-thesis-writer.git
 # 开发驾驶（元技能）
 git clone https://github.com/wanddream/skill-dev-driver.git
 
+# Blender 工业产品建模
+git clone https://github.com/wanddream/skill-blender-industrial.git
+
 # 小程序开发生态
 git clone https://github.com/wanddream/skill-miniprogram-ecosystem.git
 
@@ -62,9 +73,10 @@ YYCLink-Skills/
 ├── run.bat                # 双击运行入口
 ├── .gitignore             # 忽略下载的 skill-*/ 文件夹
 ├── skill-dev-driver/      # 开发驾驶元技能（下载后）
-├── skill-miniprogram-ecosystem/   # 小程序技能（下载后）
-├── skill-thesis-writer/           # 论文技能（下载后）
-└── skill-product-manager/         # 产品经理拷打（下载后）
+├── skill-blender-industrial/    # Blender 工业产品建模（下载后）
+├── skill-miniprogram-ecosystem/ # 小程序技能（下载后）
+├── skill-thesis-writer/         # 论文技能（下载后）
+└── skill-product-manager/       # 产品经理拷打（下载后）
 ```
 
 ## 🔄 更新所有 Skills
